@@ -43,6 +43,14 @@ Route::middleware(['auth:sanctum', \App\Http\Middleware\AdminMiddleware::class])
         Route::post('location/{location}/update-image', 'updateImage')->name('location.update-image');
         Route::apiResource('location', LocationController::class);
     });
+  
+    Route::post("menu/image-update/{id}",[MenuController::class,"updateImage"]);
+    Route::apiResource("menu",MenuController::class);
+    Route::apiResource("category",CategoryController::class);
+    Route::put("create-promotion/{id}",[PromotionController::class,"createPromotion"]);
+    Route::get("promotion",[PromotionController::class,"index"]);
+
+  
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -53,4 +61,5 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/change-profile-image', 'changeProfileImage');
         Route::put('/profile', 'update');
     });
+
 });
