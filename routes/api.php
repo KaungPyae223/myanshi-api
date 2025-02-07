@@ -50,6 +50,18 @@ Route::middleware(['auth:sanctum', \App\Http\Middleware\AdminMiddleware::class])
     Route::put("create-promotion/{id}",[PromotionController::class,"createPromotion"]);
     Route::get("promotion",[PromotionController::class,"index"]);
 
+  Route::apiResource('faq', FaqController::class);
+
+    Route::post('gallery/update-image/{id}', [GalleryController::class, 'updateGalleryImage']);
+
+    Route::apiResource('gallery', GalleryController::class);
+
+
+    Route::post('author/update-image/{id}', [AuthorController::class, 'updateAuthorImage']);
+    Route::apiResource('author', AuthorController::class);
+
+    Route::post('blog/update-image/{id}', [BlogController::class, 'updatBlogImage']);
+    Route::apiResource('blog', BlogController::class);
   
 });
 
@@ -61,5 +73,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/change-profile-image', 'changeProfileImage');
         Route::put('/profile', 'update');
     });
+
 
 });
