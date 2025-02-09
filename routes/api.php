@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -43,7 +50,7 @@ Route::middleware(['auth:sanctum', \App\Http\Middleware\AdminMiddleware::class])
         Route::post('location/{location}/update-image', 'updateImage')->name('location.update-image');
         Route::apiResource('location', LocationController::class);
     });
-  
+
     Route::post("menu/image-update/{id}",[MenuController::class,"updateImage"]);
     Route::apiResource("menu",MenuController::class);
     Route::apiResource("category",CategoryController::class);
@@ -62,7 +69,7 @@ Route::middleware(['auth:sanctum', \App\Http\Middleware\AdminMiddleware::class])
 
     Route::post('blog/update-image/{id}', [BlogController::class, 'updatBlogImage']);
     Route::apiResource('blog', BlogController::class);
-  
+
 });
 
 Route::middleware('auth:sanctum')->group(function () {
